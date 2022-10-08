@@ -1,9 +1,9 @@
 
 
     const dog_info = [
-        {id: 1, dog_name: "Bruce"},
-        {id: 2, dog_name:"Tacoma"},
-        {id: 3, dog_name: "Fiona"},
+        {"id": 1, "dog_name": "Bruce", "favorite_toy" : "woodstock"},
+        {"id": 2, "dog_name":"Tacoma", "favorite_toy" : "basketball"},
+        {"id": 3, "dog_name": "Fiona", "favorite_toy" : "sticks"},
     ]
 
 module.exports = {
@@ -30,7 +30,7 @@ module.exports = {
 
 
     getDogs: (req, res)=> {
-        res.status(200).json(dog_info)
+        res.status(200).send(dog_info)
     },
 
     postDogs: (req, res) => {
@@ -42,20 +42,20 @@ module.exports = {
         }
 
         dog_info.push(dog_add);
-        res.status(200).json({message: "successful", dog_info});
+        res.status(200).send({message: "successful", dog_info});
     },
 
     editDogs: (req, res) => {
         const {id}= req.params;
         const dog_update = dog_info.find((dog_obj)=> dog_obj.id === parseInt(id))
         dog_update.dog_name=req.body.dog_name;
-        res.status(200).json({message: "successful", dog_info});
+        res.status(200).send({message: "successful", dog_info});
 
     },
 
     deleteDogs: (req, res) => {
         const dog_delete = dog_info.find((dog_obj) => dog_obj.id === parseInt(req.params.id));
         dog_info.splice(req.params.id -1, 1);
-        res.status(200).json({message: "successful", dog_info});
+        res.status(200).send({message: "successful", dog_info});
     }
 }
