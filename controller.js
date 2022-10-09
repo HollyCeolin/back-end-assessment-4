@@ -2,7 +2,7 @@
 
     const dog_info = [
         {"id": 1, "dog_name": "Bruce", "favorite_toy" : "woodstock"},
-        {"id": 2, "dog_name":"Tacoma", "favorite_toy" : "basketball"},
+        {"id": 2, "dog_name": "Tacoma", "favorite_toy" : "basketball"},
         {"id": 3, "dog_name": "Fiona", "favorite_toy" : "sticks"},
     ]
 
@@ -30,7 +30,7 @@ module.exports = {
 
 
     getDogs: (req, res)=> {
-        res.status(200).send(dog_info)
+        res.status(200).json(dog_info)
     },
 
     postDogs: (req, res) => {
@@ -38,18 +38,19 @@ module.exports = {
 
         const dog_add = {
             id: req.body.id,
-            dog_name: req.body.dog_name
+            dog_name: req.body.dog_name,
+            favorite_toy: req.body.favorite_toy
         }
 
         dog_info.push(dog_add);
-        res.status(200).send({message: "successful", dog_info});
+        res.status(200).json({message: "successful", dog_add});
     },
 
     editDogs: (req, res) => {
         const {id}= req.params;
         const dog_update = dog_info.find((dog_obj)=> dog_obj.id === parseInt(id))
         dog_update.dog_name=req.body.dog_name;
-        res.status(200).send({message: "successful", dog_info});
+        res.status(200).json({message: "successful", dog_info});
 
     },
 

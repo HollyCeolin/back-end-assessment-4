@@ -7,10 +7,7 @@ app.use(cors());
 
 app.use(express.json());
 
-const { getDogs,
-        postDogs,
-    editDogs,
-deleteDogs
+const { getDogs,postDogs,editDogs,deleteDogs
 } = require('./controller')
 
 const { getCompliment } = require('./controller')
