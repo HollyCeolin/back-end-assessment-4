@@ -38,8 +38,8 @@ module.exports = {
 
         const dog_add = {
             id: req.body.id,
-            dog_name: req.body.dog_name,
-            favorite_toy: req.body.favorite_toy
+            dog_name: req.body.dog_name
+           
         }
 
         dog_info.push(dog_add);
