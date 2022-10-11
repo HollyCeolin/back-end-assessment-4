@@ -55,8 +55,9 @@ module.exports = {
     },
 
     deleteDogs: (req, res) => {
+        //const {id}= req.params;
         const dog_delete = dog_info.find((dog_obj) => dog_obj.id === parseInt(req.params.id));
         dog_info.splice(req.params.id -1, 1);
-        res.status(200).send({message: "successful", dog_info});
+        res.status(200).json({message: "successful", dog_info});
     }
 }
